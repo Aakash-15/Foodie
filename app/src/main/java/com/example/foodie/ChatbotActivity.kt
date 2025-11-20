@@ -27,7 +27,7 @@ class ChatbotActivity : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
     private val generativeModel = GenerativeModel(
         modelName = "gemini-2.5-flash-lite",
-        apiKey = "AIzaSyCpqps9ffHM35V94Mmf2LgeQDU_wVUh-Io"
+        apiKey = "YOUR_API_KEY"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
