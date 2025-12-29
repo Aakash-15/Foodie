@@ -34,7 +34,7 @@ class ChatbotActivity : AppCompatActivity() {
     // Using the API Key you provided previously
     private val generativeModel = GenerativeModel(
         modelName = "gemini-2.5-flash-lite",
-        apiKey = "AIzaSyDOtTGeEuv-JLLz7rO9AWgxSpdvdBUU2cw"
+        apiKey = "Your GEMINI_API KEY"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
