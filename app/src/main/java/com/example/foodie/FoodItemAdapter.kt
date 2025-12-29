@@ -36,28 +36,19 @@ class FoodItemAdapter(
 
         // Load image from assets
         try {
-            // The imageName from Firebase already contains the full path (e.g., "burger/chicken_burger.jpg")
             val imagePath = item.imageName
-            Log.d("FoodItemAdapter", "Loading image from assets: $imagePath") // Logging the path
             val inputStream: InputStream = context.assets.open(imagePath)
             val drawable = Drawable.createFromStream(inputStream, null)
             holder.itemImage.setImageDrawable(drawable)
         } catch (e: IOException) {
-            e.printStackTrace()
-            Log.e("FoodItemAdapter", "Error loading image '$' from assets: ${'$'}{e.message}", e) // Logging the error
-            // Optionally, set a placeholder image in case of an error
+            Log.e("FoodItemAdapter", "Error loading image from assets: ${item.imageName}", e)
             holder.itemImage.setImageResource(R.drawable.default_food_image)
         }
 
         // Set the click listener for the CardView to navigate to the ProductDetailsActivity
         holder.itemView.setOnClickListener {
             val intent = Intent(context, ProductDetailsActivity::class.java).apply {
-                putExtra("itemName", item.itemName)
-                putExtra("price", item.price)
-                putExtra("category", item.category)
-                putExtra("imageName", item.imageName)
-                putExtra("description", item.description)
-                putStringArrayListExtra("ingredients", ArrayList(item.ingredients))
+                putExtra("foodItem", item) // Pass the entire FoodItem object
             }
             context.startActivity(intent)
         }
